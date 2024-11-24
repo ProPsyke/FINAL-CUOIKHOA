@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <button onclick="Home()">Login</button>
+    <button>Sign Up</button>
+    <button id="logout">Sign Out</button>
+    <a href="http://127.0.0.1:5500/code/profile.html">User</a>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import {
+        getAuth,
+        signOut,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+        get,
+        child,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+      console.log(getDatabase);
+      const firebaseConfig = {
+        apiKey: "AIzaSyB5CBskeDYo_DpeskcP7B4K0qKwuGvtnn0",
+        authDomain: "foodpsykes.firebaseapp.com",
+        projectId: "foodpsykes",
+        storageBucket: "foodpsykes.appspot.com",
+        messagingSenderId: "429664914347",
+        appId: "1:429664914347:web:6d1e41cf493d55561de0ee",
+        measurementId: "G-86M6HF41TQ",
+      };
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const dbRef = ref(getDatabase());
+      const db = getDatabase();
+      function getUserId() {}
+      onAuthStateChanged(auth, (user) => {
+        console.log(user);
+        if (user) {
+          const userId = user.uid;
+          console.log(userId);
+          get(child(dbRef, `users/${userId}`))
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                console.log(snapshot.val());
+              } else {
+                console.log("nothing available");
+              }
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        } else {
+          window.location.href = "http://127.0.0.1:5500/code/login.html";
+        }
+      });
+
+      const IT = document.getElementById("logout");
+      onValue(ref(db, "users"), (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+      });
+      IT.addEventListener("click", () => {
+        signOut(auth)
+          .then(() => {
+            window.location.href = "http://127.0.0.1:5500/code/login.html";
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+    <script>
+      class Page {
+        render() {
+          return `<div class='container'>
+        HOME
+        </div>`;
+        }
+        m() {
+          window.location.href = "http://127.0.0.1:5500/code/login.html";
+        }
+      }
+      const PageHome = new Page();
+      function Home() {
+        PageHome.m();
+      }
+      const root = document.getElementById("root");
+      root.innerHTML = PageHome.render();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

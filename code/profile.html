@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Thông Tin Người Dùng
+    <h5 id="car"></h5>
+    <h5 id="theone"></h5>
+    <button id="delete">Delete User</button>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import {
+        signInWithEmailAndPassword,
+        getAuth,
+        deleteUser,
+        onAuthStateChanged,
+        updatePassword,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      import {
+        getDatabase,
+        ref,
+        child,
+        get,
+        set,
+        push,
+      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+      const firebaseConfig = {
+        apiKey: "AIzaSyB5CBskeDYo_DpeskcP7B4K0qKwuGvtnn0",
+        authDomain: "foodpsykes.firebaseapp.com",
+        projectId: "foodpsykes",
+        storageBucket: "foodpsykes.appspot.com",
+        messagingSenderId: "429664914347",
+        appId: "1:429664914347:web:6d1e41cf493d55561de0ee",
+        measurementId: "G-86M6HF41TQ",
+      };
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+      const auth = getAuth(app);
+      const first = document.getElementById("car");
+      const second = document.getElementById("theone");
+      const user = auth.currentUser;
+      auth.onAuthStateChanged((user) => {
+        console.log(user);
+        first.innerHTML = `${user.email}`;
+      });
+      const third = document.getElementById("delete");
+      third.addEventListener("click", () => {
+        console.log(user);
+        console.log(deleteUser(user));
+        deleteUser(user)
+          .then(() => {
+            window.location.href = "http://127.0.0.1:5500/code/login.html";
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      });
+    </script>
+  </body>
+</html>
