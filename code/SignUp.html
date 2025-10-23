@@ -1,162 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div
-      class="container border pb-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded"
-    >
-      <h1>For Fun & Entertainment</h1>
-      <div class="container">
-        <div class="input-group mb-3 mt-3">
-          <span class="input-group-text" id="basic-addon1">Name</span>
-          <input
-            id="Name"
-            type="text"
-            class="form-control row-6"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-        <div class="container"></div>
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Email</span>
-          <input
-            id="Email"
-            type="text"
-            class="form-control row-6"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-      </div>
-      <div class="container">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1">Password</span>
-          <input
-            id="Pass1"
-            type="password"
-            class="form-control row-6"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-      </div>
-      <div class="container">
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="basic-addon1"
-            >Confirm Password</span
-          >
-          <input
-            id="Pass"
-            type="password"
-            class="form-control row-6"
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </div>
-        <h5 id="e"></h5>
-      </div>
 
-      <button id="log">SignUp</button>
-      <button id="go">Go to SignIn</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container border pb-3 shadow-sm p-3 mb-5 bg-body-tertiary rounded" style="margin-top: 30px;">
+    <h1>Sign Up to Continue</h1>
+    <div class="container">
+      <div class="input-group mb-3 mt-3">
+        <span class="input-group-text" id="basic-addon1">Name</span>
+        <input id="Name" type="text" class="form-control row-6" placeholder="Username" aria-label="Username"
+          aria-describedby="basic-addon1" />
+      </div>
+      <div class="container"></div>
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+        <input id="Email" type="text" class="form-control row-6" placeholder="Email" aria-label="Username"
+          aria-describedby="basic-addon1" />
+      </div>
     </div>
-    <h1 class="text-center fw-bold pt-5">Sign Up</h1>
-    <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-      import {
-        signInWithEmailAndPassword,
-        getAuth,
-        onAuthStateChanged,
-        createUserWithEmailAndPassword,
-      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-      import {
-        getDatabase,
-        ref,
-        set,
-        child,
-        push,
-        onValue,
-      } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
-      import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
+    <div class="container">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Password</span>
+        <input id="Pass1" type="password" class="form-control row-6" placeholder="Password" aria-label="Username"
+          aria-describedby="basic-addon1" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Confirm Password</span>
+        <input id="Pass" type="password" class="form-control row-6" placeholder="Confirm Password" aria-label="Username"
+          aria-describedby="basic-addon1" />
+      </div>
+      <h5 id="e"></h5>
+    </div>
 
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyB5CBskeDYo_DpeskcP7B4K0qKwuGvtnn0",
-        authDomain: "foodpsykes.firebaseapp.com",
-        projectId: "foodpsykes",
-        storageBucket: "foodpsykes.appspot.com",
-        messagingSenderId: "429664914347",
-        appId: "1:429664914347:web:6d1e41cf493d55561de0ee",
-        measurementId: "G-86M6HF41TQ",
-      };
+    <button id="log" class="btn btn-primary">SignUp</button>
+    <button id="go" class="btn btn-secondary">Go to Sign In</button>
+  </div>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import {
+      signInWithEmailAndPassword,
+      getAuth,
+      onAuthStateChanged,
+      createUserWithEmailAndPassword,
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import {
+      getDatabase,
+      ref,
+      set,
+      push,
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyB5CBskeDYo_DpeskcP7B4K0qKwuGvtnn0",
+      authDomain: "foodpsykes.firebaseapp.com",
+      projectId: "foodpsykes",
+      storageBucket: "foodpsykes.appspot.com",
+      messagingSenderId: "429664914347",
+      appId: "1:429664914347:web:6d1e41cf493d55561de0ee",
+      measurementId: "G-86M6HF41TQ",
+    };
 
-      const auth = getAuth(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
 
-      const buttonSignUp = document.getElementById("log");
-      const go = document.getElementById("go");
+    const auth = getAuth(app);
+    const database = getDatabase(app);
 
-      go.addEventListener("click", () => {
-        window.location.href = "login.html";
-      });
+    const buttonSignUp = document.getElementById("log");
+    const go = document.getElementById("go");
 
-      buttonSignUp.addEventListener("click", () => {
+    go.addEventListener("click", () => {
+      window.location.href = "login.html";
+    });
+
+    buttonSignUp.addEventListener("click", async () => {
+      try {
         const userEmail = document.getElementById("Pass").value;
         const userEmail2 = document.getElementById("Pass1").value;
         if (userEmail === userEmail2) {
           console.log("Click");
           const userPassword = document.getElementById("Email").value;
-
           const real = document.getElementById("Name").value;
-          const db = getDatabase();
-
-          // set(ref(db, "users/" + 1), {
-          //   username: real,
-          //   email: userPassword,
-          // });
-           createUserWithEmailAndPassword(auth, userPassword, userEmail)
-            .then((item) => {
-              const userRef = set(ref(db, "users"), {
-                username: real,
+          createUserWithEmailAndPassword(
+            auth,
+            userPassword,
+            userEmail
+          ).then((userCredential) => {
+            const user = userCredential.user;
+            if (userEmail2 === 'pt196273') {
+              set(ref(database, "users/" + user.uid), {
                 email: userPassword,
-              });
-              console.log(item);
-              console.log(item.uid)
-              alert("Successfully SignUp");
-            })
-            .catch((err) => {
-              console.log(userPassword);
-              console.log(userEmail);
-              console.log(err);
-              handleError(err);
-            });
-        }
-        console.log(k)
+                username: real,
+                createdAt: new Date().toISOString(),
+                Role: 'Admin'
+              })
+                .then(() => {
+                  console.log('success')
+                  window.location.href = "http://127.0.0.1:5500/code/profile.html"
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+            }
+            if (userEmail2 !== 'pt196273') {
+              set(ref(database, "users/" + user.uid), {
+                email: userPassword,
+                username: real,
+                createdAt: new Date().toISOString(),
+                Role: 'Normal'
+              })
+                .then(() => {
+                  console.log('success')
+                  window.location.href = "http://127.0.0.1:5500/code/profile.html"
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+            }
 
-        // Consolelog tên đăng nhập và mật khảu
-      });
-      const er = document.getElementById("e");
-      function handleError(error) {
+          });
+        }
+      } catch (err) {
+        console.log(err);
+        const er = document.getElementById("e");
         if (error.code === "auth/invalid-credential") {
           er.innerHTML = `invalid password. Might need to check your email and password`;
         }
@@ -169,16 +150,18 @@
           er.innerHTML = ``;
         }
       }
-      onAuthStateChanged(auth, (user) => {
-        console.log(user);
-        if (user) {
-          
-          window.location.href = "http://127.0.0.1:5500/index.html";
-        } else {
-          console.log("Chưa đăng nhập");
-        }
-      });
-        onAuthStateChanged(auth,(user))
-    </script>
-  </body>
+    });
+
+    // onAuthStateChanged(auth, (user) => {
+    //   console.log(user);
+    //   if (user) {
+    //       window.location.href = "http://127.0.0.1:5500/index.html";
+
+    //   } else {
+    //     console.log("Chưa đăng nhập");
+    //   }
+    // });
+  </script>
+</body>
+
 </html>
